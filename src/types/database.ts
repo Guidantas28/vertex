@@ -454,7 +454,20 @@ export interface Database {
       };
     };
     Views: { [_ in never]: never };
-    Functions: { [_ in never]: never };
+    Functions: {
+      create_organization_for_user: {
+        Args: {
+          p_name: string;
+          p_slug: string;
+          p_business_type?: string | null;
+          p_primary_goal?: string | null;
+          p_growth_stage?: string | null;
+          p_monthly_revenue_range?: string | null;
+          p_channels_used?: string[];
+        };
+        Returns: { id: string };
+      };
+    };
     Enums: { [_ in never]: never };
     CompositeTypes: { [_ in never]: never };
   };
