@@ -16,8 +16,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Growth OS — O sistema operacional do seu crescimento",
-    template: "%s — Growth OS",
+    default: "Vertex — O sistema operacional do seu crescimento",
+    template: "%s — Vertex",
   },
   description:
     "CRM, WhatsApp, campanhas e IA em um só lugar. Feito para empreendedores brasileiros que querem crescimento previsível.",

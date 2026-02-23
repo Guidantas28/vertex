@@ -2,7 +2,7 @@ import { createClient } from "@/lib/supabase/server";
 import { LeadsContent } from "./leads-content";
 
 export const metadata = {
-  title: "Leads & CRM — Growth OS",
+  title: "Leads & CRM — Vertex",
 };
 
 export default async function LeadsPage() {

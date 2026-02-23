@@ -47,7 +47,7 @@ export function StepBusinessType() {
           animate={{ opacity: 1, y: 0 }}
           className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary"
         >
-          👋 Bem-vindo ao Growth OS
+          👋 Bem-vindo ao Vertex
         </motion.div>
         <motion.h1
           initial={{ opacity: 0, y: 8 }}

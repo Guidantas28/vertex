@@ -1,5 +1,5 @@
 -- ============================================
--- Growth OS - Supabase Database Schema
+-- Vertex - Supabase Database Schema
 -- ============================================
 
 -- Enable required extensions

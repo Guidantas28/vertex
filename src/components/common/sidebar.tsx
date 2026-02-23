@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import {
   LayoutDashboard,
   Users,
+  UsersRound,
   MessageCircle,
   Megaphone,
   CreditCard,
@@ -15,6 +16,7 @@ import {
   ChevronLeft,
   ChevronRight,
   LogOut,
+  FolderKanban,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useAppStore } from "@/stores/app.store";
@@ -36,6 +38,18 @@ const NAV_ITEMS = [
     icon: Users,
     label: "Leads & CRM",
     color: "text-blue-500",
+  },
+  {
+    href: "/projects",
+    icon: FolderKanban,
+    label: "Projetos",
+    color: "text-indigo-500",
+  },
+  {
+    href: "/teams",
+    icon: UsersRound,
+    label: "Equipes",
+    color: "text-teal-500",
   },
   {
     href: "/whatsapp",
@@ -96,7 +110,7 @@ export function Sidebar() {
       <div className="flex items-center h-14 px-3 border-b border-border">
         <div className="flex items-center gap-3 min-w-0">
           <div className="h-8 w-8 rounded-lg gradient-brand flex items-center justify-center shrink-0">
-            <span className="text-white font-bold text-sm">G</span>
+            <span className="text-white font-bold text-sm">V</span>
           </div>
           <AnimatePresence>
             {sidebarOpen && (
@@ -108,7 +122,7 @@ export function Sidebar() {
                 className="overflow-hidden"
               >
                 <span className="font-semibold text-sm text-foreground whitespace-nowrap">
-                  Growth OS
+                  Vertex
                 </span>
                 {organization && (
                   <p className="text-xs text-muted-foreground truncate max-w-[140px]">

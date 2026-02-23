@@ -407,6 +407,83 @@ export interface Database {
         };
         Relationships: [];
       };
+      teams: {
+        Row: {
+          id: string;
+          created_at: string;
+          updated_at: string;
+          organization_id: string;
+          name: string;
+          slug: string;
+          description: string | null;
+        };
+        Insert: {
+          id?: string;
+          created_at?: string;
+          updated_at?: string;
+          organization_id: string;
+          name: string;
+          slug: string;
+          description?: string | null;
+        };
+        Update: {
+          id?: string;
+          created_at?: string;
+          updated_at?: string;
+          organization_id?: string;
+          name?: string;
+          slug?: string;
+          description?: string | null;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "teams_organization_id_fkey";
+            columns: ["organization_id"];
+            isOneToOne: false;
+            referencedRelation: "organizations";
+            referencedColumns: ["id"];
+          },
+        ];
+      };
+      team_members: {
+        Row: {
+          id: string;
+          created_at: string;
+          team_id: string;
+          profile_id: string;
+          role: "lead" | "member" | "viewer";
+        };
+        Insert: {
+          id?: string;
+          created_at?: string;
+          team_id: string;
+          profile_id: string;
+          role?: "lead" | "member" | "viewer";
+        };
+        Update: {
+          id?: string;
+          created_at?: string;
+          team_id?: string;
+          profile_id?: string;
+          role?: "lead" | "member" | "viewer";
+        };
+        Relationships: [
+          {
+            foreignKeyName: "team_members_team_id_fkey";
+            columns: ["team_id"];
+            isOneToOne: false;
+            referencedRelation: "teams";
+            referencedColumns: ["id"];
+          },
+          {
+            foreignKeyName: "team_members_profile_id_fkey";
+            columns: ["profile_id"];
+            isOneToOne: false;
+            referencedRelation: "profiles";
+            referencedColumns: ["id"];
+          },
+        ];
+      };
       metrics: {
         Row: {
           id: string;
@@ -452,6 +529,297 @@ export interface Database {
         };
         Relationships: [];
       };
+      projects: {
+        Row: {
+          id: string;
+          created_at: string;
+          updated_at: string;
+          organization_id: string;
+          name: string;
+          description: string | null;
+          color: string;
+          icon: string;
+          status: "active" | "archived" | "completed";
+          start_date: string | null;
+          due_date: string | null;
+          owner_id: string | null;
+        };
+        Insert: {
+          id?: string;
+          created_at?: string;
+          updated_at?: string;
+          organization_id: string;
+          name: string;
+          description?: string | null;
+          color?: string;
+          icon?: string;
+          status?: "active" | "archived" | "completed";
+          start_date?: string | null;
+          due_date?: string | null;
+          owner_id?: string | null;
+        };
+        Update: {
+          id?: string;
+          created_at?: string;
+          updated_at?: string;
+          organization_id?: string;
+          name?: string;
+          description?: string | null;
+          color?: string;
+          icon?: string;
+          status?: "active" | "archived" | "completed";
+          start_date?: string | null;
+          due_date?: string | null;
+          owner_id?: string | null;
+        };
+        Relationships: [];
+      };
+      project_members: {
+        Row: {
+          id: string;
+          created_at: string;
+          project_id: string;
+          profile_id: string;
+          role: "owner" | "editor" | "viewer";
+        };
+        Insert: {
+          id?: string;
+          created_at?: string;
+          project_id: string;
+          profile_id: string;
+          role?: "owner" | "editor" | "viewer";
+        };
+        Update: {
+          id?: string;
+          created_at?: string;
+          project_id?: string;
+          profile_id?: string;
+          role?: "owner" | "editor" | "viewer";
+        };
+        Relationships: [];
+      };
+      task_statuses: {
+        Row: {
+          id: string;
+          created_at: string;
+          project_id: string;
+          name: string;
+          color: string;
+          position: number;
+          type: "todo" | "in_progress" | "review" | "done" | "cancelled";
+        };
+        Insert: {
+          id?: string;
+          created_at?: string;
+          project_id: string;
+          name: string;
+          color?: string;
+          position?: number;
+          type?: "todo" | "in_progress" | "review" | "done" | "cancelled";
+        };
+        Update: {
+          id?: string;
+          created_at?: string;
+          project_id?: string;
+          name?: string;
+          color?: string;
+          position?: number;
+          type?: "todo" | "in_progress" | "review" | "done" | "cancelled";
+        };
+        Relationships: [];
+      };
+      task_labels: {
+        Row: {
+          id: string;
+          created_at: string;
+          project_id: string;
+          name: string;
+          color: string;
+        };
+        Insert: {
+          id?: string;
+          created_at?: string;
+          project_id: string;
+          name: string;
+          color?: string;
+        };
+        Update: {
+          id?: string;
+          created_at?: string;
+          project_id?: string;
+          name?: string;
+          color?: string;
+        };
+        Relationships: [];
+      };
+      tasks: {
+        Row: {
+          id: string;
+          created_at: string;
+          updated_at: string;
+          project_id: string;
+          status_id: string | null;
+          parent_task_id: string | null;
+          title: string;
+          description: string | null;
+          priority: "urgent" | "high" | "medium" | "low";
+          assignee_id: string | null;
+          created_by: string | null;
+          due_date: string | null;
+          start_date: string | null;
+          position: number;
+          estimated_hours: number | null;
+          completed_at: string | null;
+        };
+        Insert: {
+          id?: string;
+          created_at?: string;
+          updated_at?: string;
+          project_id: string;
+          status_id?: string | null;
+          parent_task_id?: string | null;
+          title: string;
+          description?: string | null;
+          priority?: "urgent" | "high" | "medium" | "low";
+          assignee_id?: string | null;
+          created_by?: string | null;
+          due_date?: string | null;
+          start_date?: string | null;
+          position?: number;
+          estimated_hours?: number | null;
+          completed_at?: string | null;
+        };
+        Update: {
+          id?: string;
+          created_at?: string;
+          updated_at?: string;
+          project_id?: string;
+          status_id?: string | null;
+          parent_task_id?: string | null;
+          title?: string;
+          description?: string | null;
+          priority?: "urgent" | "high" | "medium" | "low";
+          assignee_id?: string | null;
+          created_by?: string | null;
+          due_date?: string | null;
+          start_date?: string | null;
+          position?: number;
+          estimated_hours?: number | null;
+          completed_at?: string | null;
+        };
+        Relationships: [];
+      };
+      task_label_assignments: {
+        Row: {
+          task_id: string;
+          label_id: string;
+        };
+        Insert: {
+          task_id: string;
+          label_id: string;
+        };
+        Update: {
+          task_id?: string;
+          label_id?: string;
+        };
+        Relationships: [];
+      };
+      task_comments: {
+        Row: {
+          id: string;
+          created_at: string;
+          updated_at: string;
+          task_id: string;
+          user_id: string;
+          content: string;
+        };
+        Insert: {
+          id?: string;
+          created_at?: string;
+          updated_at?: string;
+          task_id: string;
+          user_id: string;
+          content: string;
+        };
+        Update: {
+          id?: string;
+          created_at?: string;
+          updated_at?: string;
+          task_id?: string;
+          user_id?: string;
+          content?: string;
+        };
+        Relationships: [];
+      };
+      task_activities: {
+        Row: {
+          id: string;
+          created_at: string;
+          task_id: string;
+          project_id: string;
+          user_id: string | null;
+          type: "task_created" | "task_updated" | "status_changed" | "priority_changed" | "assignee_changed" | "due_date_changed" | "comment_added" | "task_completed" | "subtask_added" | "label_added" | "label_removed" | "time_logged";
+          old_value: string | null;
+          new_value: string | null;
+          metadata: Json;
+        };
+        Insert: {
+          id?: string;
+          created_at?: string;
+          task_id: string;
+          project_id: string;
+          user_id?: string | null;
+          type: "task_created" | "task_updated" | "status_changed" | "priority_changed" | "assignee_changed" | "due_date_changed" | "comment_added" | "task_completed" | "subtask_added" | "label_added" | "label_removed" | "time_logged";
+          old_value?: string | null;
+          new_value?: string | null;
+          metadata?: Json;
+        };
+        Update: {
+          id?: string;
+          created_at?: string;
+          task_id?: string;
+          project_id?: string;
+          user_id?: string | null;
+          type?: "task_created" | "task_updated" | "status_changed" | "priority_changed" | "assignee_changed" | "due_date_changed" | "comment_added" | "task_completed" | "subtask_added" | "label_added" | "label_removed" | "time_logged";
+          old_value?: string | null;
+          new_value?: string | null;
+          metadata?: Json;
+        };
+        Relationships: [];
+      };
+      time_entries: {
+        Row: {
+          id: string;
+          created_at: string;
+          task_id: string;
+          user_id: string;
+          started_at: string;
+          ended_at: string | null;
+          duration_minutes: number | null;
+          description: string | null;
+        };
+        Insert: {
+          id?: string;
+          created_at?: string;
+          task_id: string;
+          user_id: string;
+          started_at: string;
+          ended_at?: string | null;
+          duration_minutes?: number | null;
+          description?: string | null;
+        };
+        Update: {
+          id?: string;
+          created_at?: string;
+          task_id?: string;
+          user_id?: string;
+          started_at?: string;
+          ended_at?: string | null;
+          duration_minutes?: number | null;
+          description?: string | null;
+        };
+        Relationships: [];
+      };
     };
     Views: { [_ in never]: never };
     Functions: {
@@ -485,3 +853,44 @@ export type Campaign = Database["public"]["Tables"]["campaigns"]["Row"];
 export type Transaction =
   Database["public"]["Tables"]["transactions"]["Row"];
 export type Metric = Database["public"]["Tables"]["metrics"]["Row"];
+export type Team = Database["public"]["Tables"]["teams"]["Row"];
+export type TeamMember = Database["public"]["Tables"]["team_members"]["Row"];
+export type TeamMemberRole = TeamMember["role"];
+
+// Project management types
+export type Project = Database["public"]["Tables"]["projects"]["Row"];
+export type ProjectMember =
+  Database["public"]["Tables"]["project_members"]["Row"];
+export type TaskStatus =
+  Database["public"]["Tables"]["task_statuses"]["Row"];
+export type TaskLabel = Database["public"]["Tables"]["task_labels"]["Row"];
+export type Task = Database["public"]["Tables"]["tasks"]["Row"];
+export type TaskComment =
+  Database["public"]["Tables"]["task_comments"]["Row"];
+export type TaskActivity =
+  Database["public"]["Tables"]["task_activities"]["Row"];
+export type TimeEntry = Database["public"]["Tables"]["time_entries"]["Row"];
+
+export type TaskPriority = "urgent" | "high" | "medium" | "low";
+export type TaskStatusType =
+  | "todo"
+  | "in_progress"
+  | "review"
+  | "done"
+  | "cancelled";
+export type ProjectStatus = "active" | "archived" | "completed";
+
+// Extended types with relations
+export type TaskWithRelations = Task & {
+  status?: TaskStatus | null;
+  assignee?: Profile | null;
+  labels?: TaskLabel[];
+  subtasks?: Task[];
+  _count?: { subtasks: number; comments: number };
+};
+
+export type ProjectWithStats = Project & {
+  owner?: Profile | null;
+  members?: ProjectMember[];
+  _count?: { tasks: number; completed: number };
+};

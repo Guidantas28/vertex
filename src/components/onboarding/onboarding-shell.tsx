@@ -29,9 +29,9 @@ export function OnboardingShell({ children }: OnboardingShellProps) {
       <div className="flex items-center justify-between px-6 py-4 border-b border-border/50">
         <div className="flex items-center gap-2">
           <div className="h-7 w-7 rounded-lg gradient-brand flex items-center justify-center">
-            <span className="text-white font-bold text-xs">G</span>
+            <span className="text-white font-bold text-xs">V</span>
           </div>
-          <span className="font-semibold text-foreground">Growth OS</span>
+          <span className="font-semibold text-foreground">Vertex</span>
         </div>
         <div className="flex items-center gap-3">
           <span className="text-xs text-muted-foreground">

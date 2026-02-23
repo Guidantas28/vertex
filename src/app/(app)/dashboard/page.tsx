@@ -3,7 +3,7 @@ import { createClient } from "@/lib/supabase/server";
 import { DashboardContent } from "./dashboard-content";
 
 export const metadata = {
-  title: "Dashboard — Growth OS",
+  title: "Dashboard — Vertex",
 };
 
 export default async function DashboardPage() {

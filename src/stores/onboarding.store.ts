@@ -54,7 +54,7 @@ export const useOnboardingStore = create<OnboardingStore>()(
       reset: () => set({ currentStep: 0, data: initialData }),
     }),
     {
-      name: "growth-os-onboarding",
+      name: "vertex-onboarding",
     }
   )
 );

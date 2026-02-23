@@ -2,7 +2,7 @@ import { createClient } from "@/lib/supabase/server";
 import { WhatsAppContent } from "./whatsapp-content";
 
 export const metadata = {
-  title: "WhatsApp — Growth OS",
+  title: "WhatsApp — Vertex",
 };
 
 export default async function WhatsAppPage() {

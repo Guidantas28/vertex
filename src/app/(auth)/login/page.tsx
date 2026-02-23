@@ -128,9 +128,9 @@ export default function LoginPage() {
           <div className="space-y-2">
             <div className="flex items-center gap-2 lg:hidden mb-6">
               <div className="h-8 w-8 rounded-lg gradient-brand flex items-center justify-center">
-                <span className="text-white font-bold text-sm">G</span>
+                <span className="text-white font-bold text-sm">V</span>
               </div>
-              <span className="font-semibold text-lg">Growth OS</span>
+              <span className="font-semibold text-lg">Vertex</span>
             </div>
             <h1 className="text-2xl font-bold text-foreground">
               Bem-vindo de volta
